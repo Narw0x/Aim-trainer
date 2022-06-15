@@ -84,7 +84,7 @@ class Terc_staticky(Terc):
             return False
 
 def main(staticky, dynamicky, kliky):
-    global random_x, random_y,sekunda, cas, score, random_size
+    global random_x, random_y,sekunda, cas, score
     while True:
         pos = pygame.mouse.get_pos()
         okno.fill(biela)
@@ -130,7 +130,7 @@ def main(staticky, dynamicky, kliky):
 
                 okno.blit(score_text, score_rect)
 
-                cas_text =  font_32.render("cas: " + str(cas), True, cierna_farba)
+                cas_text =  font_32.render("čas: " + str(cas), True, cierna_farba)
                 cas_rect = cas_text.get_rect()
                 cas_rect.center = (250, 950)
 
@@ -182,11 +182,11 @@ def main_menu():
         menu_rect = menu.get_rect()
         menu_rect.center = (width/2, height/2 - 200)
 
-        text =  font_32.render("Stalc 'ENTER' pre start", True, cierna_farba)
+        text =  font_32.render("Stlac 'ENTER' pre start", True, cierna_farba)
         text_rect = menu.get_rect()
         text_rect.center = (width/2 + 185, height/2 + 100 )
 
-        konec =  font_32.render("Stalc 'ESC' pre vypnutie", True, cierna_farba)
+        konec =  font_32.render("Stlac 'ESC' pre vypnutie", True, cierna_farba)
         konec_rect = konec.get_rect()
         konec_rect.center = (width/2  , height/2 + 100)
 
@@ -216,11 +216,11 @@ def vyber_hry():
         menu_rect = menu.get_rect()
         menu_rect.center = (width/2, height/2 - 200)
 
-        text =  font_32.render("Stalc 'E' pre easy hru", True, cierna_farba)
+        text =  font_32.render("Stlac 'E' pre easy hru", True, cierna_farba)
         text_rect = menu.get_rect()
         text_rect.center = (width/2 - 100 , height/2 + 40)
 
-        text2 =  font_32.render("Stalc 'H' pre hard hru", True, cierna_farba)
+        text2 =  font_32.render("Stlac 'H' pre hard hru", True, cierna_farba)
         text2_rect = menu.get_rect()
         text2_rect.center = (width/2 + 350 , height/2 + 40)
 
@@ -263,15 +263,19 @@ def end(kliky):
         menu_rect = menu.get_rect()
         menu_rect.center = (width/2, 300)
 
-        klik = font_64.render("Klikol si : " + str(kliky) + (" krat"), True, cierna_farba)
+        klik = font_32.render("Klikol si : " + str(kliky) + (" krat"), True, cierna_farba)
         klik_rect = klik.get_rect()
         klik_rect.center = (width/2, 400)
 
-        text =  font_32.render("Stalc 'ENTER' pre pokracovanie", True, cierna_farba)
+        precenta = font_32.render("Uspešnosť : " + str(round(score/kliky*100, 2)) + (" %"), True, cierna_farba)
+        precenta_rect = precenta.get_rect()
+        precenta_rect.center = (width/2, 440)
+
+        text =  font_32.render("Stlac 'ENTER' pre pokracovanie", True, cierna_farba)
         text_rect = text.get_rect()
         text_rect.center = (width/2  , height/2 + 40)
 
-        konec =  font_32.render("Stalc 'ESC' pre vypnutie", True, cierna_farba)
+        konec =  font_32.render("Stlac 'ESC' pre vypnutie", True, cierna_farba)
         konec_rect = konec.get_rect()
         konec_rect.center = (width/2  , height/2 + 80)
 
@@ -280,6 +284,7 @@ def end(kliky):
         okno.blit(text, text_rect)
         okno.blit(konec, konec_rect)
         okno.blit(klik, klik_rect)
+        okno.blit(precenta, precenta_rect)
 
         pygame.display.update()
 
